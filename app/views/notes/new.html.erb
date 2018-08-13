@@ -1,17 +1,14 @@
-<h1>New Note</h1>
-
 <%= form_with scope: :note, url: notes_path, local: true do |form| %>
-  <p>
-    <%= form.label :title %>
-    <br />
-    <%= form.text_field :title %>
-  </p>
-  <p>
-    <%= form.label :text %>
-    <br />
-    <%= form.text_area :text %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
+
+  <article class="big">
+    <header>
+      <%= form.text_field :title, placeholder: "Title" %>
+    </header>
+    <p>
+      <%= form.text_area :text, placeholder: "Text" %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+  </article>
 <% end %>

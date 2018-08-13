@@ -4,6 +4,9 @@
 
 body {
   font-family: sans-serif;
+}
+
+main {  
   display: flex;
   flex-wrap: wrap;
 }
@@ -14,6 +17,30 @@ article {
   padding: 5px;
   margin: 2px;
   background: #ffe858;
+}
+
+article.big {
+  width: 500px;
+  height: 500px;
+}
+
+article input {
+  width: 100%;
+}
+
+article input:not([type=submit]) {
+  background: none;
+  border: 1px solid grey;
+}
+
+article textarea {
+  height: 150px;
+  width: 99%;
+  background: none;
+}
+
+article.big textarea {
+  height: 425px;
 }
 
 article h2 {
@@ -29,4 +56,9 @@ div.new-plus {
 .new-plus a {
   color: black;
   text-decoration: none;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
 }
