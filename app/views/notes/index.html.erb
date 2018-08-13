@@ -7,6 +7,9 @@
       <div class="actions-container">
         <%= link_to 'view', note_path(note) %>
         <%= link_to 'edit', edit_note_path(note) %>
+        <%= link_to 'delete', note_path(note),
+          method: :delete,
+          data: {confirm: 'Are you sure?'}%>
       </div>
     </header>
     <p><%= note.text %></p>
