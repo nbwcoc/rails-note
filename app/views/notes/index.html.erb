@@ -1,8 +1,27 @@
-<h1>All notes</h1>
+<!-- <h1>All notes</h1> -->
 
 <% @notes.each do |note| %>
   <article>
-    <h2><%= note.title %></h2>
+    <header>
+      <h2><%= note.title %></h2>
+      <div class="actions-container">
+        <%= link_to 'view', note_path(note) %>
+        <%= link_to 'edit', edit_note_path(note) %>
+      </div>
+    </header>
     <p><%= note.text %></p>
   </article>
 <% end %>
+
+<!-- new note -->
+<article>
+  <header>
+    <h2>New Note</h2>
+  </header>
+  <p>
+    <div class="new-plus">
+      <%= link_to '+', new_note_path %>
+    </div>
+  </p>
+</article>
+

@@ -1,0 +1,33 @@
+<h1>Edit article</h1>
+ 
+<%= form_with(model: @note, local: true) do |form| %>
+ 
+  <% if @note.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@note.errors.count, "error") %> prohibited
+        this note from being saved:
+      </h2>
+      <ul>
+        <% @note.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <article>
+    <header>
+      <%= form.text_area :title %>
+    </header>
+    <p>
+      <%= form.text_area :text %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+  </article>
+
+<% end %>
+ 
+<%= link_to 'Back', notes_path %>
