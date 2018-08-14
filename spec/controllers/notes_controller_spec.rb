@@ -15,6 +15,11 @@ RSpec.describe NotesController, type: :controller do
       expect(:notes).to be_truthy
     end
 
+    it "sets the ident cookie" do
+      get :index
+      expect(@response.cookies['ident']).to be_truthy
+    end
+
     it "renders the index" do
       get :index
       expect(response).to render_template('index')
