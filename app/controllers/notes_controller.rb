@@ -1,6 +1,9 @@
 class NotesController < ApplicationController
+
+  before_action :set_identity
+
   def index
-    @notes = Note.all
+    @notes = Note.where ["identifier = ?", @ident]
   end
 
   def create
@@ -40,6 +43,14 @@ class NotesController < ApplicationController
 
   private
   def note_params
-    params.require(:note).permit(:title, :text)
+    params.require(:note).permit(:title, :text).merge({:identifier => @ident})
+  end
+
+  def set_identity
+    if cookies[:ident] == nil
+      @ident = Base64.urlsafe_encode64 Random::DEFAULT.rand.to_s
+      cookies[:ident] = @ident
+    end
+    @ident = cookies[:ident]
   end
 end
