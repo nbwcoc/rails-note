@@ -7,7 +7,7 @@ class NotesController < ApplicationController
   end
 
   def create
-    @note = Note.new(note_params)
+    @note = Note.new(note_params.merge({:identifier => @ident}))
 
     @note.save
     redirect_to notes_path
@@ -43,7 +43,7 @@ class NotesController < ApplicationController
 
   private
   def note_params
-    params.require(:note).permit(:title, :text).merge({:identifier => @ident})
+    params.require(:note).permit(:title, :text)
   end
 
   def set_identity
